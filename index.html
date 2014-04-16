@@ -27,7 +27,7 @@
 <form class="form-inline searchForm" role="form">
   <div class="form-group">
 
-  <input class="form-control" placeholder="Search Anything About Your Friends" >
+  <input class="form-control" placeholder="Search Anything About Your Friends" ng-model="name">
   <!-- The stuff below is For step 5....get rid of the one above if you wish-->
 <!--    
     <input class="form-control" placeholder="Search Your Friends' Name" >
@@ -48,7 +48,7 @@
 </form>
 
   <ul >
-    <li class='friend' ng-repeat="person in friends">
+    <li class='friend' ng-repeat="person in friends | filter: name">
        <img class="profile-pic" ng-src='{{person.pic_square}}'>
       <h3 >{{person.name}}</h3>
       <div class="location" >
