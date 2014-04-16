@@ -1,4 +1,4 @@
-<html>
+<html ng-app="angular-friends" ng-controller="FriendController">
 <head>
 <script src='http://code.jquery.com/jquery-1.10.2.js' type='text/javascript'></script>
 <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
@@ -17,6 +17,7 @@
 </head>
 
 <body>
+{{test}}
 
 <h1>The <strong>facebook</strong> Friend Machine</h1>
 
@@ -46,18 +47,18 @@
   </div>
 </form>
 
-  <ul>
-    <li class='friend'>
-       <img class="profile-pic" src='https://scontent-a.xx.fbcdn.net/hprofile-ash3/833_10200838803828124_1233160321_a.jpg'>
-      <h3>Cali Fornia</h3>
-      <div class="location">
-        Location: New Port Beach, California, United States
+  <ul >
+    <li class='friend' ng-repeat="person in friends">
+       <img class="profile-pic" ng-src='{{person.pic_square}}'>
+      <h3 >{{person.name}}</h3>
+      <div class="location" >
+        {{person.current_location.city}}{{person.current_location.state}}{{person.current_location.country}}
       </div>      
       <div class="status">
-        Status: I hate the snow. I wish I was on the beach right now!!! <span class="hashtag">#ihateprovo</span>
+        Status: {{person.status.message}} <span class="hashtag">#ihateprovo</span>
       </div>      
       <div class="num-friends">
-        Friends: 1,367
+        Friends: {{person.friend_count}}
       </div>
     </li>
   </ul>
