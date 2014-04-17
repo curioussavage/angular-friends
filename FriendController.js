@@ -9,7 +9,9 @@ angular.module("angular-friends").controller('FriendController', function($scope
 
     $scope.search;
 
-    $scope.sortAttr ="name";
+    $scope.sortAttr =[
+        { val: "name",string:"Name"   }, {val:"friend_count", string:"friends" },{val:"current_location.city", string:"city"},{val:"current_location.state", string:"state"},{val:"current_location.country",string:"country"}
+    ];
     $scope.order = "false";
 
 })
