@@ -17,7 +17,7 @@
 </head>
 
 <body>
-{{test}}
+
 
 <h1>The <strong>facebook</strong> Friend Machine</h1>
 
@@ -27,20 +27,20 @@
 <form class="form-inline searchForm" role="form">
   <div class="form-group">
 
-  <input class="form-control" placeholder="Search Anything About Your Friends" ng-model="name">
-  <!-- The stuff below is For step 5....get rid of the one above if you wish-->
-<!--    
-    <input class="form-control" placeholder="Search Your Friends' Name" >
-    <input class="form-control" placeholder="Search Your Freinds' Location" > 
- -->
-    <select class="input-medium">
-        <option>Name</option>
-        <option># friends</option>
-        <option>City</option>
-        <option>State</option>
-        <option>Country</option>
+
+
+    <input class="form-control" placeholder="Search Your Friends' Name" ng-model="search.name">
+    <input class="form-control" placeholder="Search Your Friends' Location" ng-model="search.current_location">
+
+    <select class="input-medium" ng-model="sortAttr">
+        <option value="name">Name</option>
+        <option value="friend_count"># friends</option>
+        <option value ="current_location.city">City</option>
+        <option value ="current_location.state">State</option>
+        <option value ="current_location.country">Country</option>
     </select>
-    <select class="input-medium">
+
+    <select class="input-medium" ng-model="order">
         <option value="false">Descending</option>
         <option value="true">Ascending</option>
     </select>
@@ -48,16 +48,16 @@
 </form>
 
   <ul >
-    <li class='friend' ng-repeat="person in friends | filter: name">
+    <li class='friend' ng-repeat="person in friends | filter: search | orderBy : sortAttr: order " >
        <img class="profile-pic" ng-src='{{person.pic_square}}'>
       <h3 >{{person.name}}</h3>
       <div class="location" >
-        {{person.current_location.city}}{{person.current_location.state}}{{person.current_location.country}}
+        {{person.current_location.city}} {{person.current_location.state}} {{person.current_location.country}}
       </div>      
       <div class="status">
         Status: {{person.status.message}} <span class="hashtag">#ihateprovo</span>
       </div>      
-      <div class="num-friends">
+      <div class="num-friends" ng-show="">
         Friends: {{person.friend_count}}
       </div>
     </li>

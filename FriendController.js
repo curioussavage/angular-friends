@@ -6,7 +6,11 @@ angular.module("angular-friends").controller('FriendController', function($scope
         $scope.friends = data.results;
     })
 
-    $scope.searchterm;
+
+    $scope.search;
+
+    $scope.sortAttr ="name";
+    $scope.order = "false";
 
 })
 
