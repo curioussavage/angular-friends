@@ -1,14 +1,19 @@
-angular.module("angular-friends").service('friendService', function() {
+angular.module("angular-friends").service('friendService', function($http) {
+        return {
+            getFriends: function() {                 getFriends: function() {
 
+                $http({method: "get", url: "https://s3.amazonaws.com/intuiplan_company_files/production/files/public/FriendData.json"}).success(function(data){
+
+             }
+        }
 
 })
 
-angular.module("angular-friends").controller('FriendController', function($scope, $http){
+angular.module("angular-friends").controller('FriendController', function($scope, friendService){
         //$scope.test = "hello world";
-    $http({method: "get", url: "https://s3.amazonaws.com/intuiplan_company_files/production/files/public/FriendData.json"}).success(function(data){
+    friendService.getFriends().success(function(data){
         $scope.friends = data.results;
     })
-
 
     $scope.search;
 
