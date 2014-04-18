@@ -1,4 +1,7 @@
+angular.module("angular-friends").service('friendService', function() {
 
+
+})
 
 angular.module("angular-friends").controller('FriendController', function($scope, $http){
         //$scope.test = "hello world";
